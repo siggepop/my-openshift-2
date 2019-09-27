@@ -2,7 +2,7 @@
 FROM rhel7:7.7
 
 LABEL description="This is a custom httpd container image"
-MAINTANER Sergei Popenko <siggepop@gmail.com>
+MAINTAINER Sergei Popenko <siggepop@gmail.com>
 
 RUN yum update -y && \
 yum install -y httpd && \
