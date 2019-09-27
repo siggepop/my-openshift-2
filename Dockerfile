@@ -8,7 +8,10 @@ RUN yum update -y && \
 yum install -y httpd && \
 yum clean all
 
-EXPOSE 8080
+RUN chown -R apache:apache /etc/httpd/logs/ && \
+chown -R apache:apache /run/httpd/
+
+EXPOSE 80
 
 ENV Loglevel "info"
 
@@ -16,5 +19,5 @@ COPY ./src /var/www/html
 
 USER apache
 
-ENTRYPOINT ["/usr/sbin/httpd"]
-CMD ["-D", "FOREGROUND"]
+#ENTRYPOINT ["/usr/sbin/httpd"]
+CMD ["httpd", "-D", "FOREGROUND"]
